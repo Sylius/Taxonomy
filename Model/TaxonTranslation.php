@@ -10,36 +10,57 @@
  */
 
 namespace Sylius\Component\Taxonomy\Model;
-use Sylius\Component\Translation\Model\AbstractTranslatable;
+
+use Sylius\Component\Translation\Model\AbstractTranslation;
 
 /**
- * Model for taxonomies.
+ * Model for taxon translations.
  *
- * @author Paweł Jędrzejewski <pawel@sylius.org>
  * @author Gonzalo Vilaseca <gvilaseca@reiss.co.uk>
  */
-class Taxonomy extends AbstractTranslatable implements TaxonomyInterface
+class TaxonTranslation extends AbstractTranslation implements TaxonTranslationInterface
 {
     /**
-     * Taxonomy id.
+     * Taxon id.
      *
      * @var mixed
      */
     protected $id;
 
     /**
-     * Root taxon.
+     * Taxon name.
      *
-     * @var TaxonInterface
+     * @var string
      */
-    protected $root;
+    protected $name;
+
+    /**
+     * Taxon slug.
+     *
+     * @var string
+     */
+    protected $slug;
+
+    /**
+     * Taxon permalink.
+     *
+     * @var string
+     */
+    protected $permalink;
+
+    /**
+     * Taxon description.
+     *
+     * @var string
+     */
+    protected $description;
 
     /**
      * {@inheritdoc}
      */
     public function __toString()
     {
-        return $this->translate()->__toString();
+        return $this->name;
     }
 
     /**
@@ -55,7 +76,7 @@ class Taxonomy extends AbstractTranslatable implements TaxonomyInterface
      */
     public function getName()
     {
-        return $this->translate()->getName();
+        return $this->name;
     }
 
     /**
@@ -63,9 +84,7 @@ class Taxonomy extends AbstractTranslatable implements TaxonomyInterface
      */
     public function setName($name)
     {
-        $this->translate()->setName($name);
-        $this->root->setCurrentLocale($this->getCurrentLocale());
-        $this->root->setName($name);
+        $this->name = $name;
 
         return $this;
     }
@@ -73,19 +92,17 @@ class Taxonomy extends AbstractTranslatable implements TaxonomyInterface
     /**
      * {@inheritdoc}
      */
-    public function getRoot()
+    public function getSlug()
     {
-        return $this->root;
+        return $this->slug;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setRoot(TaxonInterface $root)
+    public function setSlug($slug)
     {
-        $root->setTaxonomy($this);
-
-        $this->root = $root;
+        $this->slug = $slug;
 
         return $this;
     }
@@ -93,25 +110,17 @@ class Taxonomy extends AbstractTranslatable implements TaxonomyInterface
     /**
      * {@inheritdoc}
      */
-    public function getTaxons()
+    public function getPermalink()
     {
-        return $this->root->getChildren();
+        return $this->permalink;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasTaxon(TaxonInterface $taxon)
+    public function setPermalink($permalink)
     {
-        return $this->root->hasChild($taxon);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTaxon(TaxonInterface $taxon)
-    {
-        $this->root->addChild($taxon);
+        $this->permalink = $permalink;
 
         return $this;
     }
@@ -119,9 +128,17 @@ class Taxonomy extends AbstractTranslatable implements TaxonomyInterface
     /**
      * {@inheritdoc}
      */
-    public function removeTaxon(TaxonInterface $taxon)
+    public function getDescription()
     {
-        $this->root->removeChild($taxon);
+        return $this->description;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
 
         return $this;
     }
