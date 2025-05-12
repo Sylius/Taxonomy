@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Sylius\Component\Taxonomy\Tests\Model;
+namespace Tests\Sylius\Component\Taxonomy\Model;
 
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Taxonomy\Model\TaxonTranslation;

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Sylius\Component\Taxonomy\Tests\Model;
+namespace Tests\Sylius\Component\Taxonomy\Model;
 
 use Doctrine\Common\Collections\Collection;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -142,7 +142,7 @@ final class TaxonTest extends TestCase
 
     public function testShouldFullNameBeNullIfUnnamed(): void
     {
-        $this->assertNull($this->taxon->getFullName());
+        $this->assertNull($this->taxon->getFullname());
     }
 
     public function testShouldFullNameBeEqualNameIfNoParent(): void
@@ -151,7 +151,7 @@ final class TaxonTest extends TestCase
 
         $this->taxon->setName($name);
 
-        $this->assertSame($name, $this->taxon->getFullName());
+        $this->assertSame($name, $this->taxon->getFullname());
     }
 
     public function testFullNamePrependsWithParentsFullName(): void

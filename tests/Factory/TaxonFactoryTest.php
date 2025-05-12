@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Sylius\Component\Taxonomy\Tests\Factory;
+namespace Tests\Sylius\Component\Taxonomy\Factory;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

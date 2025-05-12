@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Sylius\Component\Taxonomy\Tests\Generator;
+namespace Tests\Sylius\Component\Taxonomy\Generator;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;

@@ -54,7 +54,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Sylius\\Component\\Taxonomy\\tests\\": "tests/"
+            "Tests\\Sylius\\Component\\Taxonomy\\": "tests/"
         }
     },
     "repositories": [
