@@ -114,7 +114,7 @@ final class TaxonTest extends TestCase
     public function testShouldReturnAnEmptyListOfAncestorsIfCalledOnRootTaxon(): void
     {
         $this->assertTrue($this->taxon->isRoot());
-        $this->assertEmpty($this->taxon->getAncestors());
+        $this->assertTrue($this->taxon->getAncestors()->isEmpty());
     }
 
     public function testShouldBeUnnamedByDefault(): void
@@ -230,7 +230,7 @@ final class TaxonTest extends TestCase
     public function testShouldHaveNoChildrenByDefault(): void
     {
         $this->assertFalse($this->taxon->hasChildren());
-        $this->assertEmpty($this->taxon->getChildren());
+        $this->assertTrue($this->taxon->getChildren()->isEmpty());
     }
 
     public function testShouldHaveChildrenWhenChildrenHasBeenAdded(): void
